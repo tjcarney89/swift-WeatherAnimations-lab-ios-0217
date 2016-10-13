@@ -44,10 +44,6 @@ class WeatherViewController: UIViewController {
         
         UIView.animateKeyframes(withDuration: 10, delay: 0, options: .repeat, animations: {
             
-//            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
-//                self.view.backgroundColor = UIColor.cyan
-//            })
-            
             UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
                 self.view.backgroundColor = UIColor.black
             })

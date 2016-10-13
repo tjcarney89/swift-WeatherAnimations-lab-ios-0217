@@ -12,7 +12,6 @@
 		1B969ADC1DAD7CDA00F8F9C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B969ADA1DAD7CDA00F8F9C9 /* Main.storyboard */; };
 		1B969ADE1DAD7CDA00F8F9C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B969ADD1DAD7CDA00F8F9C9 /* Assets.xcassets */; };
 		1B969AE11DAD7CDA00F8F9C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B969ADF1DAD7CDA00F8F9C9 /* LaunchScreen.storyboard */; };
-		1B9B11CE1DAEE0A800A5B25A /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9B11CD1DAEE0A800A5B25A /* WeatherAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		1B969ADD1DAD7CDA00F8F9C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B969AE01DAD7CDA00F8F9C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B969AE21DAD7CDA00F8F9C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1B9B11CD1DAEE0A800A5B25A /* WeatherAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +60,6 @@
 				1B969ADD1DAD7CDA00F8F9C9 /* Assets.xcassets */,
 				1B969ADF1DAD7CDA00F8F9C9 /* LaunchScreen.storyboard */,
 				1B969AE21DAD7CDA00F8F9C9 /* Info.plist */,
-				1B9B11CD1DAEE0A800A5B25A /* WeatherAPI.swift */,
 			);
 			path = WeatherAnimations;
 			sourceTree = "<group>";
@@ -140,7 +137,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B9B11CE1DAEE0A800A5B25A /* WeatherAPI.swift in Sources */,
 				1B969AD91DAD7CDA00F8F9C9 /* WeatherViewController.swift in Sources */,
 				1B969AD71DAD7CDA00F8F9C9 /* AppDelegate.swift in Sources */,
 			);
