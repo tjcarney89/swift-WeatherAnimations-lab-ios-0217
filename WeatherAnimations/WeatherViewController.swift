@@ -44,7 +44,10 @@ class WeatherViewController: UIViewController {
         lightning.frame = CGRect(x: weatherView.frame.midX, y: weatherView.frame.midY, width: 100, height: 200)
         weatherView.addSubview(lightning)
         
-        weatherButton = UIButton(frame: CGRect(x: weatherView.frame.midX, y: weatherView.frame.midY + 200, width: 50, height: 50))
+        weatherButton = UIButton(type: .custom)
+        weatherButton.frame = CGRect(x: weatherView.frame.midX, y: weatherView.frame.midY + 200, width: 50, height: 50)
+        weatherButton.layer.borderColor = UIColor.black.cgColor
+        weatherButton.backgroundColor = UIColor.white
         weatherButton.setTitle("☔️💃", for: .normal)
         weatherView.addSubview(weatherButton)
     }
