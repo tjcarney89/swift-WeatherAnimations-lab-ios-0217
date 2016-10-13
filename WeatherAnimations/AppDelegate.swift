@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  WeatherAnimations
 //
-//  Created by Flatiron School on 10/11/16.
+//  Created by Ian Rahman on 10/11/16.
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 
