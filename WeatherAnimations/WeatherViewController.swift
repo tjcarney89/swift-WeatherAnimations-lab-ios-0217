@@ -12,7 +12,7 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.cyan
         animateSunAndMoon()
     }
     
@@ -23,12 +23,12 @@ class WeatherViewController: UIViewController {
         
         let sunImage = UIImage(named: "Sun")
         let sunView = UIImageView(image: sunImage!)
-        sunView.frame = CGRect(x: 800, y: 800, width: 300, height: 300)
+        sunView.frame = CGRect(x: 800, y: 800, width: 200, height: 200)
         view.addSubview(sunView)
         
         let moonImage = UIImage(named: "Moon")
         let moonView = UIImageView(image: moonImage!)
-        moonView.frame = CGRect(x: 800, y: 800, width: 200, height: 200)
+        moonView.frame = CGRect(x: 800, y: 800, width: 175, height: 175)
         view.addSubview(moonView)
         
         let sunAnimation = CAKeyframeAnimation(keyPath: "position")
@@ -42,11 +42,22 @@ class WeatherViewController: UIViewController {
         moonAnimation.repeatCount = MAXFLOAT
         moonAnimation.path = moonPath.cgPath
         
-        UIView.animateKeyframes(withDuration: 1, delay: 0, options: .repeat, animations: {
+        UIView.animateKeyframes(withDuration: 10, delay: 0, options: .repeat, animations: {
+            
+//            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
+//                self.view.backgroundColor = UIColor.cyan
+//            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
+                self.view.backgroundColor = UIColor.black
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.95, relativeDuration: 0.5, animations: {
+                self.view.backgroundColor = UIColor.cyan
+            })
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: { 
                 sunView.layer.add(sunAnimation, forKey: nil)
-
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
