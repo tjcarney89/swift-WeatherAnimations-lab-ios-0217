@@ -18,27 +18,49 @@ class WeatherViewController: UIViewController {
     
     func animateSunAndMoon() {
         
-        let path = UIBezierPath(arcCenter: CGPoint(x: view.frame.midX, y: view.frame.maxY), radius: 100, startAngle: 0, endAngle:CGFloat(M_PI)*2, clockwise: false)
+        let sunPath = UIBezierPath(arcCenter: CGPoint(x: self.view.frame.midX, y: self.view.frame.midY * 1.6), radius: 450, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: false)
+        let moonPath = UIBezierPath(arcCenter: CGPoint(x: self.view.frame.midX, y: self.view.frame.midY * 1.6), radius: 450, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: false)
         
-        let sun = sunAnimation(along: path)
-        let moon = moonAnimation(along: path)
-        let animationGroup = CAAnimationGroup()
-        animationGroup.animations = [sun, moon]
-        animationGroup.duration = 10
-        animationGroup.repeatCount = MAXFLOAT
-        animationGroup.autoreverses = true
+        let sunImage = UIImage(named: "Sun")
+        let sunView = UIImageView(image: sunImage!)
+        sunView.frame = CGRect(x: 800, y: 800, width: 300, height: 300)
+        view.addSubview(sunView)
         
-        // circleLayer is only used to locate the circle animation path
-        let circleLayer = CAShapeLayer()
-        circleLayer.path = path.cgPath
-        circleLayer.strokeColor = UIColor.black.cgColor
-        circleLayer.fillColor = UIColor.clear.cgColor
-        view.layer.addSublayer(circleLayer)
+        let moonImage = UIImage(named: "Moon")
+        let moonView = UIImageView(image: moonImage!)
+        moonView.frame = CGRect(x: 800, y: 800, width: 200, height: 200)
+        view.addSubview(moonView)
         
+        let sunAnimation = CAKeyframeAnimation(keyPath: "position")
+        sunAnimation.duration = 10
+        sunAnimation.repeatCount = MAXFLOAT
+        sunAnimation.path = sunPath.cgPath
+        
+        let moonAnimation = CAKeyframeAnimation(keyPath: "position")
+        moonAnimation.duration = 10
+        moonAnimation.beginTime = CACurrentMediaTime() + 5.0
+        moonAnimation.repeatCount = MAXFLOAT
+        moonAnimation.path = moonPath.cgPath
+        
+        UIView.animateKeyframes(withDuration: 1, delay: 0, options: .repeat, animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: { 
+                sunView.layer.add(sunAnimation, forKey: nil)
+
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
+                moonView.layer.add(moonAnimation, forKey: nil)
+            })
+            
+            }) { (finished) in
+                
+        }
         
     }
     
-    func sunAnimation(along path: UIBezierPath) -> CAAnimation {
+    func sunAnimation() -> CAAnimation {
+        let path = UIBezierPath(arcCenter: CGPoint(x: view.frame.midX, y: view.frame.maxY), radius: 100, startAngle: 0, endAngle:CGFloat(M_PI)*2, clockwise: false)
         
         let sunAnimation = CAKeyframeAnimation(keyPath: "position");
         sunAnimation.duration = 10
@@ -55,7 +77,8 @@ class WeatherViewController: UIViewController {
         return sunAnimation
     }
     
-    func moonAnimation(along path: UIBezierPath) -> CAAnimation {
+    func moonAnimation() -> CAAnimation {
+        let path = UIBezierPath(arcCenter: CGPoint(x: view.frame.midX, y: view.frame.maxY), radius: 100, startAngle: 0, endAngle:CGFloat(M_PI)*2, clockwise: false)
         
         let moonAnimation = CAKeyframeAnimation(keyPath: "position");
         moonAnimation.duration = 10
