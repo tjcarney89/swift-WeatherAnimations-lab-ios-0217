@@ -9,61 +9,70 @@
 import UIKit
 
 class WeatherViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.cyan
+        self.view.backgroundColor = UIColor.blue
         animateSunAndMoon()
+        animateDayAndNight()
     }
     
     func animateSunAndMoon() {
         
-        let sunPath = UIBezierPath(arcCenter: CGPoint(x: self.view.frame.midX, y: self.view.frame.midY * 1.6), radius: 450, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: false)
-        let moonPath = UIBezierPath(arcCenter: CGPoint(x: self.view.frame.midX, y: self.view.frame.midY * 1.6), radius: 450, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: false)
-        
         let sunImage = UIImage(named: "Sun")
         let sunView = UIImageView(image: sunImage!)
-        sunView.frame = CGRect(x: 800, y: 800, width: 200, height: 200)
+        sunView.frame = CGRect(x: view.frame.maxX, y: view.frame.maxY, width: 200, height: 200)
         view.addSubview(sunView)
         
         let moonImage = UIImage(named: "Moon")
         let moonView = UIImageView(image: moonImage!)
-        moonView.frame = CGRect(x: 800, y: 800, width: 175, height: 175)
+        moonView.frame = CGRect(x: view.frame.maxX, y: view.frame.maxY, width: 175, height: 175)
         view.addSubview(moonView)
         
-        let sunAnimation = CAKeyframeAnimation(keyPath: "position")
-        sunAnimation.duration = 10
-        sunAnimation.repeatCount = MAXFLOAT
-        sunAnimation.path = sunPath.cgPath
-        
-        let moonAnimation = CAKeyframeAnimation(keyPath: "position")
-        moonAnimation.duration = 10
-        moonAnimation.beginTime = CACurrentMediaTime() + 5.0
-        moonAnimation.repeatCount = MAXFLOAT
-        moonAnimation.path = moonPath.cgPath
-        
-        UIView.animateKeyframes(withDuration: 10, delay: 0, options: .repeat, animations: {
+        UIView.animateKeyframes(withDuration: 20, delay: 0, options: [.repeat, .calculationModeCubic], animations: {
             
-            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
-                self.view.backgroundColor = UIColor.black
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
+                sunView.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY - 200)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.95, relativeDuration: 0.5, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
+                sunView.center = CGPoint(x: self.view.frame.minX - sunView.frame.width, y: self.view.frame.maxY)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25, animations: {
+                moonView.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY - 200)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25, animations: {
+                moonView.center = CGPoint(x: self.view.frame.minX - moonView.frame.width, y: self.view.frame.maxY)
+            })
+            
+        }) { (finished) in
+            
+        }
+        
+    }
+    
+    func animateDayAndNight() {
+        UIView.animateKeyframes(withDuration: 20, delay: 0, options: [.repeat, .calculationModeCubic], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25, animations: {
                 self.view.backgroundColor = UIColor.cyan
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: { 
-                sunView.layer.add(sunAnimation, forKey: nil)
+            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
+                self.view.backgroundColor = UIColor.blue
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1, animations: {
-                moonView.layer.add(moonAnimation, forKey: nil)
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25, animations: {
+                self.view.backgroundColor = UIColor.black
             })
             
-            }) { (finished) in
-                
-        }
-        
+            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25, animations: {
+                self.view.backgroundColor = UIColor.blue
+            })
+            
+        })
     }
     
     func sunAnimation() -> CAAnimation {
