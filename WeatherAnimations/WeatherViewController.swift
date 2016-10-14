@@ -20,11 +20,13 @@ class WeatherViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
         setUpViews()
         animateSunAndMoon()
         animateDayAndNight()
+    
     }
     
     fileprivate func setUpViews() {
@@ -51,17 +53,17 @@ class WeatherViewController: UIViewController {
         weatherButton.layer.borderColor = UIColor.lightGray.cgColor
         weatherButton.layer.borderWidth = 5.0
         weatherButton.backgroundColor = UIColor.white
-        weatherButton.addTarget(self, action: #selector(rainDance), for: .touchUpInside)
+        weatherButton.addTarget(self, action: #selector(WeatherViewController.rainDance), for: .touchUpInside)
         weatherView.addSubview(weatherButton)
         weatherButton.setTitle("🌩", for: .normal)
-        
-//        animateWeather()
+        weatherButton.isEnabled = true
         
     }
     
     @objc fileprivate func rainDance() {
         
             animateWeather()
+        
     }
     
     fileprivate func animateWeather() {
@@ -108,9 +110,7 @@ class WeatherViewController: UIViewController {
                 self.lightning.alpha = 0
             })
             
-            }) { (finished) in
-                self.weatherButton.setTitle("🌩", for: .normal)
-        }
+        })
         
     }
     
@@ -118,6 +118,7 @@ class WeatherViewController: UIViewController {
         UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0, animations: {
+                self.lightning.alpha = 1
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.02, relativeDuration: 0, animations: {
