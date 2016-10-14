@@ -9,19 +9,17 @@
 /* Begin PBXBuildFile section */
 		1B969AD71DAD7CDA00F8F9C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B969AD61DAD7CDA00F8F9C9 /* AppDelegate.swift */; };
 		1B969AD91DAD7CDA00F8F9C9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B969AD81DAD7CDA00F8F9C9 /* WeatherViewController.swift */; };
-		1B969ADC1DAD7CDA00F8F9C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B969ADA1DAD7CDA00F8F9C9 /* Main.storyboard */; };
 		1B969ADE1DAD7CDA00F8F9C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B969ADD1DAD7CDA00F8F9C9 /* Assets.xcassets */; };
-		1B969AE11DAD7CDA00F8F9C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B969ADF1DAD7CDA00F8F9C9 /* LaunchScreen.storyboard */; };
+		4CCFBEBF1DB077FB00732497 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCFBEBE1DB077FB00732497 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B969AD31DAD7CDA00F8F9C9 /* WeatherAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAnimations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B969AD61DAD7CDA00F8F9C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B969AD81DAD7CDA00F8F9C9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		1B969ADB1DAD7CDA00F8F9C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B969ADD1DAD7CDA00F8F9C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1B969AE01DAD7CDA00F8F9C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B969AE21DAD7CDA00F8F9C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CCFBEBE1DB077FB00732497 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +54,8 @@
 			children = (
 				1B969AD61DAD7CDA00F8F9C9 /* AppDelegate.swift */,
 				1B969AD81DAD7CDA00F8F9C9 /* WeatherViewController.swift */,
-				1B969ADA1DAD7CDA00F8F9C9 /* Main.storyboard */,
+				4CCFBEBE1DB077FB00732497 /* LaunchScreen.storyboard */,
 				1B969ADD1DAD7CDA00F8F9C9 /* Assets.xcassets */,
-				1B969ADF1DAD7CDA00F8F9C9 /* LaunchScreen.storyboard */,
 				1B969AE21DAD7CDA00F8F9C9 /* Info.plist */,
 			);
 			path = WeatherAnimations;
@@ -124,9 +121,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B969AE11DAD7CDA00F8F9C9 /* LaunchScreen.storyboard in Resources */,
 				1B969ADE1DAD7CDA00F8F9C9 /* Assets.xcassets in Resources */,
-				1B969ADC1DAD7CDA00F8F9C9 /* Main.storyboard in Resources */,
+				4CCFBEBF1DB077FB00732497 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,25 +139,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1B969ADA1DAD7CDA00F8F9C9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B969ADB1DAD7CDA00F8F9C9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1B969ADF1DAD7CDA00F8F9C9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B969AE01DAD7CDA00F8F9C9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1B969AE31DAD7CDA00F8F9C9 /* Debug */ = {

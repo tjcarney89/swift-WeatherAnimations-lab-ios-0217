@@ -15,8 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Create a new window for the optional property that comes standard on the AppDelegate class in which our View Controller will appear
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // Create a new instance of WeatherViewController
+        let mainViewController = WeatherViewController()
+        
+        // Set the initial View Controller to our instance of WeatherViewController
+        window?.rootViewController = mainViewController
+        
+        // Present our window
         window?.makeKeyAndVisible()
+        
         return true
     }
 
