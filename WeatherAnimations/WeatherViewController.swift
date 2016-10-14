@@ -22,7 +22,6 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
         setUpViews()
-        animateWeather()
         animateSunAndMoon()
         animateDayAndNight()
     }
@@ -31,43 +30,110 @@ class WeatherViewController: UIViewController {
         
         weatherView.frame = view.frame
         view.addSubview(weatherView)
-
+        
         sun.frame = CGRect(x: view.frame.maxX, y: view.frame.maxY, width: 200, height: 200)
         view.addSubview(sun)
         
         moon.frame = CGRect(x: view.frame.maxX, y: view.frame.maxY, width: 175, height: 175)
         view.addSubview(moon)
         
-        cloud.frame = CGRect(x: weatherView.frame.midX, y: weatherView.frame.maxY, width: 200, height: 100)
-        weatherView.addSubview(cloud)
-        
-        lightning.frame = CGRect(x: weatherView.frame.midX, y: weatherView.frame.midY, width: 100, height: 200)
+        lightning.center = CGPoint(x: self.weatherView.frame.midX, y: self.view.frame.midY + 75)
         weatherView.addSubview(lightning)
+        lightning.alpha = 0
+        
+        cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.view.frame.midY - 75)
+        weatherView.addSubview(cloud)
+        cloud.alpha = 0
         
         weatherButton = UIButton(type: .custom)
-        weatherButton.frame = CGRect(x: weatherView.frame.midX, y: weatherView.frame.midY + 200, width: 50, height: 50)
-        weatherButton.layer.borderColor = UIColor.black.cgColor
+        weatherButton.frame = CGRect(x: weatherView.frame.midX - 50, y: weatherView.frame.midY + 200, width: 100, height: 50)
+        weatherButton.layer.borderColor = UIColor.lightGray.cgColor
+        weatherButton.layer.borderWidth = 5.0
         weatherButton.backgroundColor = UIColor.white
-        weatherButton.setTitle("☔️💃", for: .normal)
+        weatherButton.addTarget(self, action: #selector(rainDance), for: .touchUpInside)
         weatherView.addSubview(weatherButton)
+        weatherButton.setTitle("☔️💃", for: .normal)
+        
+        animateWeather()
+        
+    }
+    
+    @objc fileprivate func rainDance() {
+        
+        weatherButton.setTitle("Let there be rain!", for: .normal)
+        
     }
     
     fileprivate func animateWeather() {
-        UIView.animate(withDuration: 5, animations: {
-            self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.view.frame.midY)
+        
+        UIView.animateKeyframes(withDuration: 5, delay: 0, options: [.calculationModeCubic], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: { 
+                self.cloud.alpha = 1
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: { 
+                self.cloud.center = CGPoint(x: self.weatherButton.frame.midX, y: self.weatherView.frame.midY - 100)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.2, animations: {
+                self.cloud.center = CGPoint(x: self.weatherButton.frame.midX, y: self.weatherView.frame.midY - 75)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2, animations: {
+                self.cloud.center = CGPoint(x: self.weatherButton.frame.midX, y: self.weatherView.frame.midY - 100)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: {
+                self.cloud.center = CGPoint(x: self.weatherButton.frame.midX, y: self.weatherView.frame.midY - 75)
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1, animations: {
+                self.cloud.alpha = 0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0, animations: {
+                self.lightning.alpha = 1
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.02, relativeDuration: 0, animations: {
+                self.lightning.alpha = 0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0, animations: {
+                self.lightning.alpha = 1
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0, animations: {
+                self.lightning.alpha = 0
+            })
+            
             }) { (finished) in
-                if self.weatherIsNice { return }
+                self.weatherButton.setTitle("☔️💃", for: .normal)
+                rain.stop()
         }
         
-        UIView.animate(withDuration: 2, delay: 0, options: .repeat, animations: {
-            self.lightning.center = CGPoint(x: self.weatherView.frame.midX, y: self.view.frame.midY + 50)
-        }) { (finished) in
-            if self.weatherIsNice { return }
-        }
     }
     
-    fileprivate func stopWeather() {
-        
+    fileprivate func animateLightning() {
+        UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0, animations: {
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.02, relativeDuration: 0, animations: {
+                self.lightning.alpha = 0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0, animations: {
+                self.lightning.alpha = 1
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0, animations: {
+                self.lightning.alpha = 0
+            })
+            
+        })
     }
     
     fileprivate func animateSunAndMoon() {
