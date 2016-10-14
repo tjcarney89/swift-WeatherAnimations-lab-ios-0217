@@ -87,7 +87,7 @@ class WeatherViewController: UIViewController {
         
         UIView.animateKeyframes(withDuration: 8,
                                 delay: 0,
-                                options: [.calculationModeCubic],
+                                options: .calculationModeCubic,
                                 animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
@@ -127,30 +127,42 @@ class WeatherViewController: UIViewController {
         
         UIView.animateKeyframes(withDuration: 1,
                                 delay: 3,
-                                options: [.autoreverse],
+                                options: .autoreverse,
                                 animations: {
             
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.2,
+                               relativeDuration: 0,
+                               animations: {
                 self.lightning.alpha = 1
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.4,
+                               relativeDuration: 0,
+                               animations: {
                 self.lightning.alpha = 0
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.5,
+                               relativeDuration: 0,
+                               animations: {
                 self.lightning.alpha = 1
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.7,
+                               relativeDuration: 0,
+                               animations: {
                 self.lightning.alpha = 0
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.8,
+                               relativeDuration: 0,
+                               animations: {
                 self.lightning.alpha = 1
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 1, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 1,
+                               relativeDuration: 0,
+                               animations: {
                 self.lightning.alpha = 0
             })
         })
@@ -160,23 +172,37 @@ class WeatherViewController: UIViewController {
         
         UIView.animateKeyframes(withDuration: 20,
                                 delay: 0,
-                                options: [.repeat, .calculationModeCubic, .allowUserInteraction],
+                                options: [.repeat,
+                                          .calculationModeCubic,
+                                          .allowUserInteraction],
                                 animations: {
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
-                self.sun.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.minY + 150)
+            UIView.addKeyframe(withRelativeStartTime: 0,
+                               relativeDuration: 0.25,
+                               animations: {
+                self.sun.center = CGPoint(x: self.view.frame.midX,
+                                          y: self.view.frame.minY + 150)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
-                self.sun.center = CGPoint(x: self.view.frame.minX - self.sun.frame.width, y: self.view.frame.maxY)
+            UIView.addKeyframe(withRelativeStartTime: 0.25,
+                               relativeDuration: 0.25,
+                               animations: {
+                self.sun.center = CGPoint(x: self.view.frame.minX - self.sun.frame.width,
+                                          y: self.view.frame.maxY)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25, animations: {
-                self.moon.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.minY + 150)
+            UIView.addKeyframe(withRelativeStartTime: 0.5,
+                               relativeDuration: 0.25,
+                               animations: {
+                self.moon.center = CGPoint(x: self.view.frame.midX,
+                                           y: self.view.frame.minY + 150)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25, animations: {
-                self.moon.center = CGPoint(x: self.view.frame.minX - self.moon.frame.width, y: self.view.frame.maxY)
+            UIView.addKeyframe(withRelativeStartTime: 0.75,
+                               relativeDuration: 0.25,
+                               animations: {
+                self.moon.center = CGPoint(x: self.view.frame.minX - self.moon.frame.width,
+                                           y: self.view.frame.maxY)
             })
             
         })
@@ -187,22 +213,32 @@ class WeatherViewController: UIViewController {
         
         UIView.animateKeyframes(withDuration: 20,
                                 delay: 0,
-                                options: [.repeat, .calculationModeCubic, .allowUserInteraction],
+                                options: [.repeat,
+                                          .calculationModeCubic,
+                                          .allowUserInteraction],
                                 animations: {
             
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0,
+                               relativeDuration: 0.25,
+                               animations: {
                 self.view.backgroundColor = UIColor.cyan
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.25,
+                               relativeDuration: 0.25,
+                               animations: {
                 self.view.backgroundColor = UIColor.blue
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.5,
+                               relativeDuration: 0.25,
+                               animations: {
                 self.view.backgroundColor = UIColor.black
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.75,
+                               relativeDuration: 0.25,
+                               animations: {
                 self.view.backgroundColor = UIColor.blue
             })
             

@@ -20,7 +20,9 @@ You may have noticed that there's no `main.storyboard` in this project. On many 
 
 Storyboards are notorious for how persnickety they are, and will register and automatically save changes if you simply open and look at them even without changing any of the content. The problem is compounded by how the errors are handled in Xcode, which prevents you from opening a storyboard file if there are any reported conflicts within it. When you finally manage to open the storyboard file in a plaintext editor, the conflicts themselves are very difficult to interpret.
 
-There's much discussion around handling storyboard-based UI development, and many ways to make it work for your team. One solution sometimes taken is removing story
+There's much discussion around handling storyboard-based UI development, and many ways to make it work for your team. Some teams, however, completely do away with storyboards and instead load view controllers directly from code.
+
+If you look in the `AppDelegate` file, you'll see that 
 
 ### Advanced
 
