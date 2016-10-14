@@ -22,125 +22,149 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         view.backgroundColor = UIColor.blue
-        setUpViews()
-        animateSunAndMoon()
-        animateDayAndNight()
-    
+        
+        setUpViews {
+            self.animateSunAndMoon()
+            self.animateDayAndNight()
+        }
+        
     }
     
-    fileprivate func setUpViews() {
+    fileprivate func setUpViews(completion:() -> ()) {
+        
+        sun.frame = CGRect(x: view.frame.maxX,
+                           y: view.frame.maxY,
+                           width: 200,
+                           height: 200)
+        view.addSubview(sun)
+        
+        moon.frame = CGRect(x: view.frame.maxX,
+                            y: view.frame.maxY,
+                            width: 175,
+                            height: 175)
+        view.addSubview(moon)
         
         weatherView.frame = view.frame
         view.addSubview(weatherView)
+        weatherView.alpha = 0
         
-        sun.frame = CGRect(x: view.frame.maxX, y: view.frame.maxY, width: 200, height: 200)
-        view.addSubview(sun)
-        
-        moon.frame = CGRect(x: view.frame.maxX, y: view.frame.maxY, width: 175, height: 175)
-        view.addSubview(moon)
-        
-        lightning.center = CGPoint(x: self.weatherView.frame.midX, y: self.view.frame.midY + 75)
-        weatherView.addSubview(lightning)
         lightning.alpha = 0
+        lightning.center = CGPoint(x: self.weatherView.frame.midX,
+                                   y: self.view.frame.midY + 75)
         
-        cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.view.frame.midY - 75)
+        weatherView.addSubview(lightning)
+        
+        
+        cloud.center = CGPoint(x: self.weatherView.frame.midX,
+                               y: self.view.frame.midY - 60)
+        
         weatherView.addSubview(cloud)
-        cloud.alpha = 0
         
         weatherButton = UIButton(type: .custom)
-        weatherButton.frame = CGRect(x: weatherView.frame.midX - 25, y: weatherView.frame.midY + 200, width: 50, height: 50)
+        weatherButton.frame = CGRect(x: weatherView.frame.midX - 25,
+                                     y: weatherView.frame.midY + 200,
+                                     width: 50,
+                                     height: 50)
+        weatherButton.isUserInteractionEnabled = true
         weatherButton.layer.borderColor = UIColor.lightGray.cgColor
         weatherButton.layer.borderWidth = 5.0
         weatherButton.backgroundColor = UIColor.white
-        weatherButton.addTarget(self, action: #selector(WeatherViewController.rainDance), for: .touchUpInside)
-        weatherView.addSubview(weatherButton)
         weatherButton.setTitle("🌩", for: .normal)
         weatherButton.isEnabled = true
+        weatherButton.addTarget(self, action: #selector(WeatherViewController.animateWeather), for: .touchUpInside)
+        
+        view.addSubview(weatherButton)
+        
+        completion()
         
     }
     
-    @objc fileprivate func rainDance() {
+    func animateWeather() {
         
-            animateWeather()
+        weatherButton.isEnabled = false
         
-    }
-    
-    fileprivate func animateWeather() {
-        
-        UIView.animateKeyframes(withDuration: 5, delay: 0, options: [.calculationModeCubic], animations: {
+        UIView.animateKeyframes(withDuration: 8,
+                                delay: 0,
+                                options: [.calculationModeCubic],
+                                animations: {
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: { 
-                self.cloud.alpha = 1
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
+                self.weatherView.alpha = 1
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: { 
-                self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.weatherView.frame.midY - 100)
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3, animations: {
+                self.weatherView.center = CGPoint(x: self.weatherView.frame.midX,
+                                                  y: self.weatherView.frame.midY - 100)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.2, animations: {
-                self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.weatherView.frame.midY - 75)
+            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.3, animations: {
+                self.weatherView.center = CGPoint(x: self.weatherView.frame.midX,
+                                                  y: self.weatherView.frame.midY + 100)
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2, animations: {
-                self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.weatherView.frame.midY - 100)
-            })
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: {
-                self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.weatherView.frame.midY - 75)
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.3, animations: {
+                self.weatherView.center = CGPoint(x: self.weatherView.frame.midX,
+                                                  y: self.weatherView.frame.midY - 100)
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1, animations: {
-                self.cloud.alpha = 0
+                self.weatherView.alpha = 0
             })
+        }) { finished in
+            if finished {
+                self.weatherView.center = CGPoint(x: self.weatherView.frame.midX,
+                                                  y: self.weatherView.frame.midY + 100)
+                self.weatherButton.isEnabled = true
+            }
+        }
+        
+        animateLightning()
+    }
+    
+    fileprivate func animateLightning() {
+        
+        UIView.animateKeyframes(withDuration: 1,
+                                delay: 3,
+                                options: [.autoreverse],
+                                animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0, animations: {
                 self.lightning.alpha = 1
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.02, relativeDuration: 0, animations: {
-                self.lightning.alpha = 0
-            })
-            
             UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0, animations: {
-                self.lightning.alpha = 1
-            })
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0, animations: {
                 self.lightning.alpha = 0
             })
             
-        })
-        
-    }
-    
-    fileprivate func animateLightning() {
-        UIView.animateKeyframes(withDuration: 1, delay: 0, options: [], animations: {
-            
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0, animations: {
                 self.lightning.alpha = 1
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.02, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0, animations: {
                 self.lightning.alpha = 0
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0, animations: {
                 self.lightning.alpha = 1
             })
             
-            UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 1, relativeDuration: 0, animations: {
                 self.lightning.alpha = 0
             })
-            
         })
     }
     
     fileprivate func animateSunAndMoon() {
-        UIView.animateKeyframes(withDuration: 20, delay: 0, options: [.repeat, .calculationModeCubic], animations: {
+        
+        UIView.animateKeyframes(withDuration: 20,
+                                delay: 0,
+                                options: [.repeat, .calculationModeCubic, .allowUserInteraction],
+                                animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25, animations: {
-                self.sun.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY - 200)
+                self.sun.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.minY + 150)
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25, animations: {
@@ -148,7 +172,7 @@ class WeatherViewController: UIViewController {
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25, animations: {
-                self.moon.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY - 200)
+                self.moon.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.minY + 150)
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25, animations: {
@@ -160,7 +184,11 @@ class WeatherViewController: UIViewController {
     }
     
     fileprivate func animateDayAndNight() {
-        UIView.animateKeyframes(withDuration: 20, delay: 0, options: [.repeat, .calculationModeCubic], animations: {
+        
+        UIView.animateKeyframes(withDuration: 20,
+                                delay: 0,
+                                options: [.repeat, .calculationModeCubic, .allowUserInteraction],
+                                animations: {
             
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25, animations: {
                 self.view.backgroundColor = UIColor.cyan
