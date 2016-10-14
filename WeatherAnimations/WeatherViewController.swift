@@ -18,6 +18,7 @@ class WeatherViewController: UIViewController {
     var weatherIsNice = true
     var weatherButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.blue
@@ -46,22 +47,21 @@ class WeatherViewController: UIViewController {
         cloud.alpha = 0
         
         weatherButton = UIButton(type: .custom)
-        weatherButton.frame = CGRect(x: weatherView.frame.midX - 50, y: weatherView.frame.midY + 200, width: 100, height: 50)
+        weatherButton.frame = CGRect(x: weatherView.frame.midX - 25, y: weatherView.frame.midY + 200, width: 50, height: 50)
         weatherButton.layer.borderColor = UIColor.lightGray.cgColor
         weatherButton.layer.borderWidth = 5.0
         weatherButton.backgroundColor = UIColor.white
         weatherButton.addTarget(self, action: #selector(rainDance), for: .touchUpInside)
         weatherView.addSubview(weatherButton)
-        weatherButton.setTitle("☔️💃", for: .normal)
+        weatherButton.setTitle("🌩", for: .normal)
         
-        animateWeather()
+//        animateWeather()
         
     }
     
     @objc fileprivate func rainDance() {
         
-        weatherButton.setTitle("Let there be rain!", for: .normal)
-        
+            animateWeather()
     }
     
     fileprivate func animateWeather() {
@@ -73,19 +73,19 @@ class WeatherViewController: UIViewController {
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: { 
-                self.cloud.center = CGPoint(x: self.weatherButton.frame.midX, y: self.weatherView.frame.midY - 100)
+                self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.weatherView.frame.midY - 100)
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.2, animations: {
-                self.cloud.center = CGPoint(x: self.weatherButton.frame.midX, y: self.weatherView.frame.midY - 75)
+                self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.weatherView.frame.midY - 75)
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2, animations: {
-                self.cloud.center = CGPoint(x: self.weatherButton.frame.midX, y: self.weatherView.frame.midY - 100)
+                self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.weatherView.frame.midY - 100)
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: {
-                self.cloud.center = CGPoint(x: self.weatherButton.frame.midX, y: self.weatherView.frame.midY - 75)
+                self.cloud.center = CGPoint(x: self.weatherView.frame.midX, y: self.weatherView.frame.midY - 75)
             })
             
             UIView.addKeyframe(withRelativeStartTime: 0.9, relativeDuration: 0.1, animations: {
@@ -109,8 +109,7 @@ class WeatherViewController: UIViewController {
             })
             
             }) { (finished) in
-                self.weatherButton.setTitle("☔️💃", for: .normal)
-                rain.stop()
+                self.weatherButton.setTitle("🌩", for: .normal)
         }
         
     }
