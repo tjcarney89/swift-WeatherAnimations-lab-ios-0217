@@ -15,7 +15,6 @@ class WeatherViewController: UIViewController {
     let cloud = UIImageView(image: UIImage(named: "Cloud"))
     let lightning = UIImageView(image: UIImage(named: "Lightning"))
     let weatherView = UIView()
-    var weatherIsNice = true
     var weatherButton: UIButton!
     
     
@@ -36,31 +35,27 @@ class WeatherViewController: UIViewController {
         
         sun.frame = CGRect(x: view.frame.maxX,
                            y: view.frame.maxY,
-                           width: 200,
-                           height: 200)
-        view.addSubview(sun)
+                           width: view.frame.width / 2,
+                           height: view.frame.width / 2)
         
         moon.frame = CGRect(x: view.frame.maxX,
                             y: view.frame.maxY,
-                            width: 175,
-                            height: 175)
-        view.addSubview(moon)
+                            width: view.frame.width / 2.5,
+                            height: view.frame.width / 2.5)
         
         weatherView.frame = view.frame
-        view.addSubview(weatherView)
         weatherView.alpha = 0
         
+        cloud.frame.origin = CGPoint(x: self.weatherView.frame.midX,
+                               y: self.weatherView.frame.midY - 60)
+        cloud.frame.size.width = weatherView.frame.width / 2
+        cloud.frame.size.height = cloud.frame.width / 2
+        
         lightning.alpha = 0
-        lightning.center = CGPoint(x: self.weatherView.frame.midX,
-                                   y: self.view.frame.midY + 75)
-        
-        weatherView.addSubview(lightning)
-        
-        
-        cloud.center = CGPoint(x: self.weatherView.frame.midX,
-                               y: self.view.frame.midY - 60)
-        
-        weatherView.addSubview(cloud)
+        lightning.center = CGPoint(x: cloud.frame.midX,
+                                   y: cloud.frame.midY + cloud.frame.height / 2)
+        lightning.frame.size.width = cloud.frame.width / 4
+        lightning.frame.size.height = cloud.frame.height * 2
         
         weatherButton = UIButton(type: .custom)
         weatherButton.frame = CGRect(x: weatherView.frame.midX - 25,
@@ -75,7 +70,12 @@ class WeatherViewController: UIViewController {
         weatherButton.isEnabled = true
         weatherButton.addTarget(self, action: #selector(WeatherViewController.animateWeather), for: .touchUpInside)
         
+        view.addSubview(moon)
+        view.addSubview(sun)
+        view.addSubview(weatherView)
         view.addSubview(weatherButton)
+        weatherView.addSubview(lightning)
+        weatherView.addSubview(cloud)
         
         completion()
         
