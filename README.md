@@ -47,7 +47,7 @@ The four images you are required to use in this app have been provided in the `A
 
 ## Advanced Challenges
 
-Attempt the following challenges only if you feel comfortable with the preceding instructions. These are ordered by increasing difficulty and there 
+Attempt the following challenges only if you feel comfortable with the preceding instructions. These are ordered by increasing difficulty.
 
 ### Challenge 1
 
