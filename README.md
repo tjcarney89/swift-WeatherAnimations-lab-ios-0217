@@ -16,10 +16,6 @@ By the end of this lab the student should:
 
 ![this](https://media.giphy.com/media/l3vRbYYtb0nZMs2A0/giphy.gif)
 
-### Advanced: Make it rain!
-
-What's a storm without some rain? (Heat lightning!) Find a way to animate rainfall when the `stormButton` is tapped. It should start only after the cloud has fully appeared and end before the cloud disappears.
-
 ### Replacing Storyboards with Code
 
 You may have noticed that there's no `main.storyboard` in this project. On many development teams, storyboard files are shunned in favor of working entirely in code. This is due to the challenges of managing merge conflicts when multiple people are working on the UI of an app.
@@ -33,3 +29,21 @@ If you look in the `AppDelegate` file, you'll see that we have a property called
 Instead of using a storyboard to create a `UIWindow`, this is now taken care of in `AppDelegate`'s `application(_:didFinishLaunchingWithOptions:)`. After setting the value for `window`, an instance of `WeatherViewController` is created, set as the root view controller, and presented to the user. From here, the view controller is free to do its thing.
 
 This may or may not come up in the code you write and work on, but it's a great way to get a sense of what goes on under the hood any time you open up an app!
+
+## Advanced Challenges
+
+Attempt the following challenges only if you feel comfortable with the preceding instructions. These are ordered by increasing difficulty and there 
+
+### Challenge 1
+
+Don't use constraints at all. Sounds crazy, right? But it's totally doable. In fact, the example animation gifs were all created with animation on the `frame`s of each view.
+
+### Challenge 2
+
+Replace the sun and moon animation with methods from the `CAAnimation` class. Specifically, find a way to animate the rise and fall of the sun and moon along a circular bezier curve path.
+
+### Challenge 3
+
+What's a storm without some rain? (Heat lightning!) Find a way to animate rainfall when the `stormButton` is tapped. It should start only after the cloud has fully appeared and end before the cloud disappears.
+
+**Warning:** There is no official solution for Challenge 3. There are many potential avenues you can follow, but the eventual outcome is up to you!
