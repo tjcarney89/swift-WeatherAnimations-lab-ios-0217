@@ -20,7 +20,7 @@ There's much discussion around handling storyboard-based UI development, and the
 
 ### Enlightened by Dark Magic
 
-If you look in the `AppDelegate` file, you'll see that we have an optional `UIWindow` property called `window`. Normally, the project settings point toward a primary interface for our app, which defaults to `main.storyboard`. This automatically instantiates a `UIWindow`, which is then passed to the `AppDelegate`. The `window` is then given the initial view controller by the storyboard.
+If you look in the `AppDelegate` file, you'll see an optional `UIWindow` property called `window`. Normally, the project settings point toward a primary interface for our app, which defaults to `main.storyboard`. This automatically instantiates a `UIWindow`, which is then passed to the `AppDelegate`. The `window` is then given the initial view controller by the storyboard.
 
 Instead of using a storyboard to create a `UIWindow`, this is now taken care of in `AppDelegate`'s `application(_:didFinishLaunchingWithOptions:)`. After setting the value for the `window` property, an instance of `WeatherViewController` is created, set as the root view controller, and presented to the user. From here, the view controller is free to do its thing.
 
