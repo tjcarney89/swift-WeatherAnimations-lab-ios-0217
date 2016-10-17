@@ -30,6 +30,8 @@ This may or may not come up in the code you write and work on, but it's a great 
 
 The following instructions are intentionally vague in an attempt to mimic real-world conditions. In many instances, a designer and/or product manager (PM) will give you specificaions for how your app should look and operate, and it's up to you to "make it so".
 
+All of your work should take place in the `WeatherViewController` file.
+
 Here's what your app is expected to do:
 
 1. Gradually cycle the background color between `blue`, `cyan`, and `black` over 20 seconds to simulate the day/night cycle. Colors may be used more than once in the cycle. This should start automatically and repeat indefinitely.
