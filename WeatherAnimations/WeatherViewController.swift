@@ -10,6 +10,7 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
+    
     let sun = UIImageView(image: UIImage(named: "Sun"))
     let moon = UIImageView(image: UIImage(named: "Moon"))
     let cloud = UIImageView(image: UIImage(named: "Cloud"))
@@ -23,7 +24,6 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.blue
-        true ? print("hi") : print("ho")
         setUpViews {
             self.animateSunAndMoon()
             self.animateDayAndNight()
@@ -53,7 +53,7 @@ class WeatherViewController: UIViewController {
         
         lightning.alpha = 0
         lightning.frame.size.width = cloud.frame.width / 4
-        lightning.frame.size.height = lightning.frame.width * 3
+        lightning.frame.size.height = lightning.frame.width * 2
         lightning.frame.origin = CGPoint(x: cloud.frame.midX - lightning.frame.size.width / 2,
                                    y: cloud.frame.maxY)
         
@@ -66,9 +66,12 @@ class WeatherViewController: UIViewController {
         weatherButton.layer.borderColor = UIColor.lightGray.cgColor
         weatherButton.layer.borderWidth = 5.0
         weatherButton.backgroundColor = UIColor.white
-        weatherButton.setTitle("🌩", for: .normal)
+        weatherButton.setTitle("🌩",
+                               for: .normal)
         weatherButton.isEnabled = true
-        weatherButton.addTarget(self, action: #selector(WeatherViewController.animateWeather), for: .touchUpInside)
+        weatherButton.addTarget(self,
+                                action: #selector(WeatherViewController.animateWeather),
+                                for: .touchUpInside)
         
         view.addSubview(moon)
         view.addSubview(sun)
