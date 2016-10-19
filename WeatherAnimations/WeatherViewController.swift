@@ -16,7 +16,7 @@ class WeatherViewController: UIViewController {
     let cloud = UIImageView(image: UIImage(named: "Cloud"))
     let lightning = UIImageView(image: UIImage(named: "Lightning"))
     let weatherView = UIView()
-    var weatherButton: UIButton!
+    var weatherButton = UIButton(type: .system)
     
     
     override func viewDidLoad() {
@@ -57,7 +57,6 @@ class WeatherViewController: UIViewController {
         lightning.frame.origin = CGPoint(x: cloud.frame.midX - lightning.frame.size.width / 2,
                                    y: cloud.frame.maxY)
         
-        weatherButton = UIButton(type: .custom)
         weatherButton.frame = CGRect(x: weatherView.frame.midX - 25,
                                      y: weatherView.frame.midY + 200,
                                      width: 50,
